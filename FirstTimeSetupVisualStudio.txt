@@ -1,0 +1,7 @@
+Follow this to setup your Visual Studio so it will work:
+1: make sure you have python installed on your machine
+2: make sure you have flask installed on your machine
+3: in solution explorer right click Python Enviornments and add a python enviornment if you don't have an enviornment under it, just follow the defaults.
+4: in solution explorer right click your envirornment under Python Enviornments and select "Install from requirements.txt"
+5: in solution explorer right click Scorpion (second from the top) and go to properties
+	5.1 set startup file to "runserver.py"
