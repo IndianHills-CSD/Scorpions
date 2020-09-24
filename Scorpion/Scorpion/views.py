@@ -6,14 +6,17 @@ from datetime import datetime
 import webbrowser
 from flask import render_template
 from Scorpion import app
+#from flask_nav import Nav
 
 @app.route('/')
 @app.route('/home')
 def home():
     """Renders the home page."""
+    """
     queryString = "Monty Python"
     queryString = queryString.replace(" ", "%20", -1)
     IMDBQuery(queryString)
+    """
     return render_template(
         'Esports.html',
         title='Home Page',
