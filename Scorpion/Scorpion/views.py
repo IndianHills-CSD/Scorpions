@@ -6,9 +6,22 @@ from datetime import datetime
 import webbrowser
 from flask import render_template
 from Scorpion import app
-#from flask_nav import Nav
+from flask_nav import Nav
+from flask_nav.elements import Navbar, View, Subgroup
+
+nav = Nav(app)
+
+theNavBar = Navbar(
+    'thenav',
+    View('Home', 'home'),
+    View('Esports', 'esports'),
+    View('Sports', 'sports'),
+    View('Movies', 'movies')
+    )
+nav.register_element('main_navbar', theNavBar)
 
 @app.route('/')
+
 @app.route('/home')
 def home():
     """Renders the home page."""
@@ -18,30 +31,41 @@ def home():
     IMDBQuery(queryString)
     """
     return render_template(
-        'Esports.html',
+        'index.html',
         title='Home Page',
         year=datetime.now().year,
     )
 
-@app.route('/contact')
-def contact():
-    """Renders the contact page."""
+@app.route('/esports')
+def esports():
+    """Renders the esports page."""
     return render_template(
-        'contact.html',
-        title='Contact',
+        'Esports.html',
+        title='Esports',
         year=datetime.now().year,
-        message='Your contact page.'
+        message='Esports page.'
     )
 
-@app.route('/about')
-def about():
-    """Renders the about page."""
+@app.route('/sports')
+def sports():
+    """Renders the sports page."""
     str 
     return render_template(
-        'about.html',
-        title='About',
+        'Sports.html',
+        title='Sports',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='Sports page.'
+    )
+
+@app.route('/movies')
+def movies():
+    """Renders the sports page."""
+    str 
+    return render_template(
+        'Movies.html',
+        title='Movies',
+        year=datetime.now().year,
+        message='Movies page.'
     )
 
 def IMDBQuery(lookkupp):
