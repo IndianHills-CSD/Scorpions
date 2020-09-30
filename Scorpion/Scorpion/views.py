@@ -6,6 +6,7 @@ from datetime import datetime
 import webbrowser
 from flask import render_template
 from Scorpion import app
+'''This is a future thing that renders the navbar differently
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View, Subgroup
 
@@ -19,6 +20,7 @@ theNavBar = Navbar(
     View('Movies', 'movies')
     )
 nav.register_element('main_navbar', theNavBar)
+'''
 
 @app.route('/')
 
