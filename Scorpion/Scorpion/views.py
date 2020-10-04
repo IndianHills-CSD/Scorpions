@@ -6,6 +6,8 @@ from datetime import datetime
 import webbrowser
 from flask import render_template
 from Scorpion import app
+import Scorpion.movieFunctions as mf
+
 '''This is a future thing that renders the navbar differently
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View, Subgroup
@@ -27,11 +29,6 @@ nav.register_element('main_navbar', theNavBar)
 @app.route('/home')
 def home():
     """Renders the home page."""
-    """
-    queryString = "Monty Python"
-    queryString = queryString.replace(" ", "%20", -1)
-    IMDBQuery(queryString)
-    """
     return render_template(
         'index.html',
         title='Home Page',
@@ -62,7 +59,7 @@ def sports():
 @app.route('/movies')
 def movies():
     """Renders the sports page."""
-    str 
+
     return render_template(
         'Movies.html',
         title='Movies',
@@ -70,19 +67,25 @@ def movies():
         message='Movies page.'
     )
 
-def IMDBQuery(lookkupp):
-    import http.client
 
-    conn = http.client.HTTPSConnection("imdb8.p.rapidapi.com")
+@app.route('/moviesResults')
+def moviesResults():
+    """Renders the sports page."""
+    theSearchString = "Avengers"
+    actualSearch = theSearchString.replace(" ", "%20", -1)
 
-    headers = {
-        'x-rapidapi-host': "imdb8.p.rapidapi.com",
-        'x-rapidapi-key': "aacba34385msh2de2878b096e1a1p13e391jsn86c2163e469d"
-        }
+    return render_template(
+        'MoviesResults.html',
+        title='Movies',
+        year=datetime.now().year,
 
-    conn.request("GET", "/title/auto-complete?q="+lookkupp, headers=headers)
+        searchString = theSearchString,
+        message='Movie search results.',
+        movieResults = mf.movieSearch(actualSearch),
+        useless = ''
+    )
 
-    res = conn.getresponse()
-    data = res.read()
 
-    print(data.decode("utf-8"))
+
+
+
