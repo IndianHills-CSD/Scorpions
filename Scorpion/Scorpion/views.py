@@ -82,8 +82,17 @@ def moviesResults():
         searchString = theSearchString,
         message='Movie search results.',
         movieResults = mf.movieSearch(actualSearch),
-        useless = ''
     )
+@app.route('/LeagueOfLegends')
+def LeagueOfLegends():
+    """Renders the League page"""
+    return render_template(
+        'eLeague.html',
+        title="League of Legends",
+        year=datetime.now().year,
+        message='League of Legends page'
+        # id pass
+        )
 
 
 
