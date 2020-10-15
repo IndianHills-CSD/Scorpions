@@ -5,24 +5,34 @@
     <h1>
         Welcome to our sports main page!
     </h1>
+
+    <h2>
+        The sports we cover are Football, Basketball, and Baseball.
+    </h2>
 </header>
 
-<p>
-    Below is:
-</p>
-<ul>
-    <li>Sports we cover</li>
-    <li>Team/Player statistics</li>
-    <li>Full schedules of each sport</li>
-</ul>
+<div class="Info">
+    <h2>Tournaments/Info</h2>
 
-<div id="ourSports">
+    <p>Click the sport below you would like to learn more about.</p>
+
+    <ul>
+        <a><li href="url">Football</li></a>
+        <a><li href="url">Baseball</li></a>
+        <a><li href="url">Basketball</li></a>
+</ul>
+</div>
+
+<div class="stats">
     <h2>
-        Sports we cover
+        Statistics
     </h2>
-    <p>
-        The sports we cover are Football, Basketball, and Baseball. We have statistics for all players and teams currently playing.
-        Schedules are also available for each sport on this site.
-    </p>
+    <form>
+        <label for="search">Select search preference</label><br />
+        <select id="search" name="filters">
+            <option value="1">Teams</option>
+            <option value="2">Players</option>
+        </select>
+    </form>
 </div>
 {% endblock %}
