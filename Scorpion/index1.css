@@ -1,0 +1,96 @@
+.header
+{
+    padding: 60px;
+    text-align: center;
+}
+
+body
+{
+    
+    background: lightblue;
+
+}
+
+
+head h1 {
+color: red;
+}
+
+nav {
+    text-align: center;
+    
+    
+    
+    width: 100%;
+}
+.esportClass h1{
+    text-align: center;
+}
+.esportClass p {
+    margin: auto;
+    width: 60%;
+    border: 3px solid black;
+    padding: 20px;
+    
+}
+.esportClass img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 63%;
+    height: auto;
+    border: 1px solid yellow;
+    border-radius: 4px;
+}
+.esportList {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    border: 3px solid black;
+}
+ .sportList {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    border: 3px solid black;
+}
+.sportClass{
+    text-align:center;
+}
+.sportClass p {
+        margin: auto;
+        width: 60%;
+        border: 3px solid black;
+        padding: 20px;
+    }
+    .sportClass img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 63%;
+        height: auto;
+        padding:0;
+    }
+.movieClass{
+    text-align: center;
+}
+.movieClass p {
+        margin: auto;
+        width: 60%;
+        border: 3px solid black;
+        padding: 20px;
+    }
+.movieClass img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 63%;
+    height: 350px;
+}
+footer h4{
+    text-align:center;
+    font-size: 50px;
+}
+footer p {
+    text-align: center;
+}
