@@ -2,7 +2,7 @@
 
 {% block content %}
 <header>
-    <a href="eSports">
+    <a  href="{{ url_for('LeagueOfLegends') }}">
         <img src="/static/images/league-of-legends.jpg"  style="width:33.3%;height:218px;float:right;" alt="leaguePic" />
     </a>
     <a href="eSports">
@@ -60,6 +60,8 @@
             <option value="3">League of Legends</option>
         </select>
     </form>
+    <button id="submit" onclick="apiLoad()">Submit</button>
+    <div class="loader"style="display:none"></div>
 
 </div>
 
