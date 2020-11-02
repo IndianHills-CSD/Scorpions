@@ -6,7 +6,9 @@ from datetime import datetime
 import webbrowser
 from flask import render_template
 from Scorpion import app
+
 import Scorpion.movieFunctions as mf
+import Scorpion.eLeagueFunctions as el
 
 '''This is a future thing that renders the navbar differently
 from flask_nav import Nav
@@ -81,18 +83,26 @@ def moviesResults():
 
         searchString = theSearchString,
         message='Movie search results.',
-        movieResults = mf.movieSearch(actualSearch),
+        movieResults = mf.movieSearch(actualSearch)
     )
+
+
 @app.route('/LeagueOfLegends')
 def LeagueOfLegends():
     """Renders the League page"""
+    theSearchString = "Avengers"
+    actualSearch = theSearchString.replace(" ", "%20", -1),
+
     return render_template(
-        'eLeague.html',
+        'LeagueOfLegends.html',
         title="League of Legends",
         year=datetime.now().year,
-        message='League of Legends page'
+
+        message='League of Legends page',
         # id pass
-        )
+        leagueOfLegends = el.eLeagueFunctions()
+        
+    )
 
 
 
