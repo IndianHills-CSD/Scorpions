@@ -7,6 +7,7 @@ import webbrowser
 from flask import render_template
 from Scorpion import app
 import Scorpion.movieFunctions as mf
+import Scorpion.Sports as spt
 
 '''This is a future thing that renders the navbar differently
 from flask_nav import Nav
@@ -53,7 +54,10 @@ def sports():
         'Sports.html',
         title='Sports',
         year=datetime.now().year,
-        message='Sports page.'
+        message='Sports page.', 
+        basketBallDesc = spt.getSport("Basketball"),
+        footBallDesc = spt.getSport("American Football"),
+        baseBallDesc = spt.getSport("Baseball")
     )
 
 @app.route('/movies')
@@ -82,8 +86,17 @@ def moviesResults():
         searchString = theSearchString,
         message='Movie search results.',
         movieResults = mf.movieSearch(actualSearch),
-        useless = ''
     )
+@app.route('/LeagueOfLegends')
+def LeagueOfLegends():
+    """Renders the League page"""
+    return render_template(
+        'eLeague.html',
+        title="League of Legends",
+        year=datetime.now().year,
+        message='League of Legends page'
+        # id pass
+        )
 
 @app.route('/LeagueOfLegends')
 def League():

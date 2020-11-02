@@ -1,0 +1,73 @@
+{% extends "Navbar.html" %}
+
+{% block content %}
+<header>
+    <a  href="{{ url_for('LeagueOfLegends') }}">
+        <img src="/static/images/league-of-legends.jpg"  style="width:33.3%;height:218px;float:right;" alt="leaguePic" />
+    </a>
+    <a href="eSports">
+        <img src="/static/images/Dota-2-img.jpg" style="width:33.3%;height:218px;float:right;" alt="dotaPic" />
+    </a>
+    <a href="eSports">
+    <img src="/static/images/csGoImage.jpg" style="width:33.4%;height:218px;float:right;" alt="csGoPic"  />
+    </a>
+    <h1>
+        Welcome To Our Esports Statistics Page!
+    </h1>
+</header>
+
+<ul>
+    <a><li href="url">CS:GO</li></a>
+    <a><li href="url">Dota 2</li></a>
+    <a><li href="url">League of Legends</li></a>
+</ul>
+
+<div class="eSports">
+    <h2>What is Esports?</h2>
+    <p>Esports is a global gaming league made up of semi-pro and pro teams that compete in tournaments for prizes</p>
+    <p>Pro Regions: NA(North America), EU(Europe), ROC (China), Korea, Oceanic</p>
+</div>
+
+<div class="Cs:go">
+    <h2>Counter Strike: Global Offensive</h2>
+    <p>CS:GO is a multiplayer first-person shooter developed by Valve. This game is the fourth installment in the
+    Counter Strike series and was released to Windows, OS X, Xbox 360, and PlayStation 3 on August 21st, 2012. </p>
+
+</div>
+
+<div class="DotaInfo">
+    <h2>Dota 2</h2>
+    <p>Dota 2 is a multiplayer online battle arena video game developed and published by Valve. 
+    The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III:
+    Reign of Chaos and its expansion pack, The Frozen Throne. It was released to Windows on July 9th, 2013.</p>
+</div>
+
+<div class="LeagueInfo">
+    <h2>League of Legends</h2>
+    <p>League of Legends is a multiplayer online battle arena esports video game developed and published by Riot Games for
+    Microsoft Windows and macOS. Originally inspired by Defense of the Ancients, the game follows a freemium model and is commonly described 
+    as the world's most iconic esport. It was released on October 27th, 2009.</p>
+</div>
+
+<div class="statsTeam">
+    <h2>Team Info/Statistics</h2>
+
+    <form>
+        <label for="search">Select game preference</label><br />
+        <select id="search" name="filters">
+            <option value="1">CS:GO</option>
+            <option value="2">Dota 2</option>
+            <option value="3">League of Legends</option>
+        </select>
+    </form>
+    <button id="submit" onclick="apiLoad()">Submit</button>
+    <div class="loader"style="display:none"></div>
+
+</div>
+
+<div class="schedule">
+    <h2>Tournaments Schedule</h2>
+
+</div>
+
+{% endblock %}
