@@ -10,10 +10,25 @@
     </header>
 
     <p>Below is:</p>
+
     <ul>
         <li><a href="{{ url_for('moviesResults') }}">SearchResults</a></li>
         <li><a href="/Review/">Review</a> </li>
     </ul>
+
+    <form action="">
+        Search: <input type="search" id="mySearch" name="filter">
+        <input type="submit">
+    </form>
+    
+    <p id="demo"></p>
+
+    <script>
+        function myFunction() {
+            document.getElementById("mySearch").required = true;
+            document.getElementById("demo").innerHTML = "The required property was set. The search field must now be filled out before submitting the form.";
+        }
+    </script>
 
     <div id="movies">
         <h2>What is Movies?</h2>
@@ -25,14 +40,6 @@
     </div>
 </body>
 </html>
-
-<div id="movies">
-    <h2>What is Movies?</h2>
-    <p>motion picture or moving picture, is a visual art-form used to simulate experiences that communicate ideas, 
-      stories, perceptions, feelings, beauty, or atmosphere through the use of moving images. 
-      These images are generally accompanied by sound, and more rarely, other sensory stimulations.</p>
-
-</div>
 
 {% endblock %}
 

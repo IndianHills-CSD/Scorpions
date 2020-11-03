@@ -47,6 +47,26 @@ def idSearch(id):
     #dataToReturn = json.loads(data);
     return dataToReturn;
 
+
+#
+def leagueGameSearch(searchString):
+    conn = http.client.HTTPSConnection("api-pandascore.p.rapidapi.com")
+
+    headers = {
+    'x-rapidapi-host': "api-pandascore.p.rapidapi.com",
+    'x-rapidapi-key': "0a56ecd8a4msh557dc3387a3c8b2p18a8a5jsnda85dc032912"
+    }
+
+    conn.request("GET", "/tournaments/%7Bid%7D.json", headers=headers)
+    res = conn.getresponse()
+    data = res.read()
+
+    dataDecoded = json.loads(data)
+
+    theResponse = addDetails(dataDecoded)
+
+    return theResponse
+
 def formatSearch(searchS):
     import re
     searchS = re.sub('[^0-9a-zA-Z]+', ' ', searchS)
@@ -74,7 +94,7 @@ def apiUpcomingMovies():
 
     res = conn.getresponse()
     data = res.read()
-
+    
     dataToReturn = json.loads(data);
     return dataToReturn;
 

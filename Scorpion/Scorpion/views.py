@@ -98,7 +98,16 @@ def LeagueOfLegends():
         message='League of Legends page'
         # id pass
         )
-
+@app.route('/LeagueOfLegends')
+def League():
+    """Renders the League page"""
+    return render_template(
+        'eLeague.html',
+        title="League of Legends",
+        year=datetime.now().year,
+        message='League of Legends page'
+        )
+        
 def batchUpdate():
     todaysDate = datetime.today().strftime('%Y-%m-%d')
     batchDate = ""
@@ -110,9 +119,11 @@ def batchUpdate():
         batchDate = "1001-01-01"
 
     if(todaysDate != batchDate):
+
+        
         try:
             conn = mf.getConnection()
-            storeMovies(conn)
+            mf.storeMovies(conn)
             f = open("updatedDate.txt", "w")
             f.write(todaysDate)
             f.close()
