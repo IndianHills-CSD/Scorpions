@@ -48,23 +48,3 @@ def formatSearch(searchS):
     searchS.replace(" ", "%20", -1)
     return searchS
 
-#
-def leagueGameSearch(searchString):
-    conn = http.client.HTTPSConnection("api-pandascore.p.rapidapi.com")
-
-    headers = {
-    'x-rapidapi-host': "api-pandascore.p.rapidapi.com",
-    'x-rapidapi-key': "0a56ecd8a4msh557dc3387a3c8b2p18a8a5jsnda85dc032912"
-    }
-
-    conn.request("GET", "/tournaments/%7Bid%7D.json", headers=headers)
-
-    res = conn.getresponse()
-    data = res.read()
-
-    dataDecoded = json.loads(data)
-    
-    theResponse = addDetails(dataDecoded)
-
-    return theResponse
-
