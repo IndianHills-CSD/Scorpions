@@ -94,8 +94,6 @@ def moviesResults():
 @app.route('/LeagueOfLegends')
 def LeagueOfLegends():
     """Renders the League page"""
-    theSearchString = "Avengers"
-    actualSearch = theSearchString.replace(" ", "%20", -1),
 
     return render_template(
         'LeagueOfLegends.html',

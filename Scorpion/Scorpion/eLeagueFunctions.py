@@ -29,7 +29,7 @@ def eLeagueFunctions():
     
     #theResponse = addDetails(info)
     #
-    #return theResponse
+    
 
 def addDetails(baseDict):
     length = len(baseDict['Search'])
