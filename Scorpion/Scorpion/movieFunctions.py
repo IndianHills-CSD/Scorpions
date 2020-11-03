@@ -1,9 +1,13 @@
 import http.client
 import re
 import json
+import urllib.parse
+import pyodbc
 
 def movieSearch(searchString):
     conn = http.client.HTTPSConnection("movie-database-imdb-alternative.p.rapidapi.com")
+
+    #searchString = urllib.parse.quote(searchString)
 
     headers = {
         'x-rapidapi-host': "movie-database-imdb-alternative.p.rapidapi.com",
@@ -23,7 +27,7 @@ def movieSearch(searchString):
 def addDetails(baseDict):
     length = len(baseDict['Search'])
     for index in range(length):
-        baseDict['Search'][index]['details'] = idSearch(baseDict['Search'][index]['imdbID'])
+        baseDict['Search'][index]['details'] = json.loads(idSearch(baseDict['Search'][index]['imdbID']))
     return baseDict
 
 
@@ -38,9 +42,10 @@ def idSearch(id):
     conn.request("GET", "/?i="+id+"&r=json", headers=headers)
 
     res = conn.getresponse()
-    data = res.read()
+    dataToReturn = res.read()
 
-    return json.loads(data)
+    #dataToReturn = json.loads(data);
+    return dataToReturn;
 
 def formatSearch(searchS):
     import re
@@ -48,3 +53,58 @@ def formatSearch(searchS):
     searchS.replace(" ", "%20", -1)
     return searchS
 
+def storeMovies(conn):
+    upcomingMovies = apiUpcomingMovies()
+    trendingMovies = apiTrendingMovies()
+
+
+
+
+def apiUpcomingMovies():
+    import http.client
+
+    conn = http.client.HTTPSConnection("rapidapi.p.rapidapi.com")
+
+    headers = {
+        'x-rapidapi-key': "aacba34385msh2de2878b096e1a1p13e391jsn86c2163e469d",
+        'x-rapidapi-host': "movies-tvshows-data-imdb.p.rapidapi.com"
+        }
+
+    conn.request("GET", "/?page=1&type=get-upcoming-movies", headers=headers)
+
+    res = conn.getresponse()
+    data = res.read()
+
+    dataToReturn = json.loads(data);
+    return dataToReturn;
+
+def apiTrendingMovies():
+    import http.client
+
+    conn = http.client.HTTPSConnection("rapidapi.p.rapidapi.com")
+
+    headers = {
+        'x-rapidapi-key': "aacba34385msh2de2878b096e1a1p13e391jsn86c2163e469d",
+        'x-rapidapi-host': "movies-tvshows-data-imdb.p.rapidapi.com"
+        }
+
+    conn.request("GET", "/?page=1&type=get-trending-movies", headers=headers)
+
+    res = conn.getresponse()
+    data = res.read()
+                    
+    dataToReturn = json.loads(data);
+    return dataToReturn;
+
+
+
+def getUpcomingMovies():
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM UpcomingMovies.table')
+
+def getConnection():
+    conn = pyodbc.connect(driver='{SQL Server Native Client 11.0}',
+                      server='(localdb)\MSSQLLocalDB',
+                      database='Scorpions',
+                      trusted_connection='yes')
+    return conn

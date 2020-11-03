@@ -8,6 +8,7 @@ from flask import render_template
 from Scorpion import app
 import Scorpion.movieFunctions as mf
 import Scorpion.Sports as spt
+import pyodbc
 
 '''This is a future thing that renders the navbar differently
 from flask_nav import Nav
@@ -97,6 +98,29 @@ def LeagueOfLegends():
         message='League of Legends page'
         # id pass
         )
+
+def batchUpdate():
+    todaysDate = datetime.today().strftime('%Y-%m-%d')
+    batchDate = ""
+    try:
+        f = open("updatedDate.txt", "r")
+        batchDate = f.readline()
+        f.close()
+    except:
+        batchDate = "1001-01-01"
+
+    if(todaysDate != batchDate):
+        try:
+            conn = mf.getConnection()
+            storeMovies(conn)
+            f = open("updatedDate.txt", "w")
+            f.write(todaysDate)
+            f.close()
+        except:
+            print("Something went wrong in updating movies")
+        
+
+batchUpdate()
 
 
 
