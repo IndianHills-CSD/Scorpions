@@ -20,15 +20,15 @@
 </header>
 
 <div class="Info">
-    <h2>Tournaments/Info</h2>
+    <h2>Event Info</h2>
 
     <p>Click the sport below you would like to learn more about.</p>
 
     <ul>
-        <a><li href="url">Football</li></a>
-        <a><li href="url">Baseball</li></a>
-        <a><li href="url">Basketball</li></a>
-</ul>
+        <li><a href="{{url_for('leagues', sportName = 'American%20Football')}}">Football</a></li>
+        <li><a href="{{url_for('leagues', sportName = 'Baseball')}}">Baseball</a></li>
+        <li><a href="{{url_for('leagues', sportName = 'Basketball')}}">Basketball</a></li>
+    </ul>
 </div>
 
 <div class="stats">
