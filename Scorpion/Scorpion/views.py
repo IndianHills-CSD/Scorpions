@@ -69,7 +69,9 @@ def movies():
         'Movies.html',
         title='Movies',
         year=datetime.now().year,
-        message='Movies page.'
+        message='Movies page.',
+        upcomingMovies = mf.getUpcomingMovies(),
+        trendingMovies = mf.getTrendingMovies()
     )
 
 
@@ -121,14 +123,14 @@ def batchUpdate():
     if(todaysDate != batchDate):
 
         
-        try:
+        #try:
             conn = mf.getConnection()
             mf.storeMovies(conn)
             f = open("updatedDate.txt", "w")
             f.write(todaysDate)
             f.close()
-        except:
-            print("Something went wrong in updating movies")
+        #except:
+        #    print("Something went wrong in updating movies")
         
 
 batchUpdate()
