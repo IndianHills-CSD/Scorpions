@@ -65,17 +65,18 @@ def sports():
 def leagues(sportName):
     """Renders the leagues page."""
     league = spt.getSportsLeague(sportName)
-
-    return render_template(
-        'Leagues.html',
-        title='Sports Leagues',
-        year=datetime.now().year,
-        message='Leagues Page',
-        league = league,
-        sport = sportName,
-        spt = spt
-    )
-
+    try:
+        return render_template(
+            'Leagues.html',
+            title='Sports Leagues',
+            year=datetime.now().year,
+            message='Leagues Page',
+            league = league,
+            sport = sportName,
+            spt = spt
+        )
+    except:
+        print("Error")
 @app.route('/movies')
 def movies():
     """Renders the sports page."""
@@ -90,10 +91,10 @@ def movies():
     )
 
 
-@app.route('/moviesResults')
-def moviesResults():
+@app.route('/moviesResults/<query>')
+def moviesResults(query):
     """Renders the sports page."""
-    theSearchString = "Avengers"
+    theSearchString = query
     actualSearch = theSearchString.replace(" ", "%20", -1)
 
     return render_template(
@@ -139,7 +140,8 @@ def batchUpdate():
 
         
         #try:
-            conn = mf.getConnection()
+            #conn = mf.getConnection()
+            conn = ""
             mf.storeMovies(conn)
             f = open("updatedDate.txt", "w")
             f.write(todaysDate)
