@@ -1,0 +1,46 @@
+{% extends "Navbar.html" %}
+
+{% block content %}
+
+<header>
+    <h1>
+        {{sport}} Leagues
+    </h1>
+</header>
+
+{%for result in league['countrys']%}
+    
+<div class="leagueInfo">
+    <img src="{{result['strLogo']}}" alt="{{result['strLeague']}}"/>
+    <p>Full Name: {{result['strLeagueAlternate']}}</p>
+    <p>Released: {{result['strDescriptionEN']}}</p>
+
+    {% set upcomingEvents, previousEvents = spt.getEventsbyLeagueId(result['idLeague'])%}
+    {% if(upcomingEvents['events'] != None) %}
+    <h3>Upcoming Events</h3>
+    <ul>
+        {%for event in upcomingEvents['events']%}
+        <li>{{event['strEvent']}}</li>
+        <ul>
+            <li>Event Date: {{event['dateEvent']}}</li>
+            <li>Event Time: {{event['strTime']}}</li>
+        </ul>
+        {%endfor%}
+    </ul>
+    {% endif %}
+    {% if(previousEvents['events'] != None) %}
+    <h2>Previous Events</h2>
+    <ul>
+        {%for event in previousEvents['events']%}
+        <li>{{event['strEvent']}}</li>
+        <ul>
+            <li>Event Date: {{event['dateEvent']}}</li>
+            <li>Event Time: {{event['strTime']}}</li>
+        </ul>
+        {%endfor%}
+    </ul>
+    {% endif %}
+</div>
+{%endfor%}
+
+{% endblock %}
