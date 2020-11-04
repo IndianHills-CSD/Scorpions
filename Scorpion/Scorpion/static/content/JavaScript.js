@@ -1,0 +1,3 @@
+function apiLoad() {
+    $(".loader").show();
+}
