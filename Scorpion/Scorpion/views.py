@@ -6,7 +6,9 @@ from datetime import datetime
 import webbrowser
 from flask import render_template
 from Scorpion import app
+
 import Scorpion.movieFunctions as mf
+import Scorpion.eLeagueFunctions as el
 import Scorpion.Sports as spt
 import pyodbc
 
@@ -104,18 +106,25 @@ def moviesResults(query):
 
         searchString = theSearchString,
         message='Movie search results.',
-        movieResults = mf.movieSearch(actualSearch),
+        movieResults = mf.movieSearch(actualSearch)
     )
+
+
 @app.route('/LeagueOfLegends')
 def LeagueOfLegends():
     """Renders the League page"""
+
     return render_template(
-        'eLeague.html',
+        'LeagueOfLegends.html',
         title="League of Legends",
         year=datetime.now().year,
-        message='League of Legends page'
+
+        message='League of Legends page',
         # id pass
-        )
+        leagueOfLegends = el.eLeagueFunctions()
+        
+    )
+
 @app.route('/LeagueOfLegends')
 def League():
     """Renders the League page"""

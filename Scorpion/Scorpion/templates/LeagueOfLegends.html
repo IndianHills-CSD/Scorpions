@@ -1,0 +1,24 @@
+﻿{% extends "Navbar.html" %}
+
+{% block content %}
+
+<header>
+    <h1>
+        hello
+        <!--Results for: {{searchString}} -->
+    </h1>
+</header>
+
+
+{%for result in LeagueOfLegends['Search']%}
+<div >
+    <h2>League of Legends Champions</h2>
+    <p>Name: {{result['name']}}</p>
+    <p>Id: {{result['id']}}</p>
+
+    <!--<img class="" src="{{result['']}}" alt="{{result['']}} Poster" height="300"> -->
+
+</div>
+{%endfor%}
+
+{% endblock %}
