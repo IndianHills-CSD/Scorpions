@@ -106,6 +106,16 @@ def LeagueOfLegends():
         
     )
 
+@app.route('/LeagueOfLegends')
+def League():
+    """Renders the League page"""
+    return render_template(
+        'eLeague.html',
+        title="League of Legends",
+        year=datetime.now().year,
+        message='League of Legends page'
+        )
+
 
 
 

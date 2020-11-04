@@ -32,9 +32,9 @@ def eLeagueFunctions():
     
 
 def addDetails(baseDict):
-    length = len(baseDict['Search'])
+    length = len(baseDict[''])
     for index in range(length):
-        baseDict['Search'][index]['details'] = idSearch(baseDict['Search'][index]['imdbID'])
+        baseDict[''][index][''] = idSearch(baseDict[''][index][''])
     return baseDict
 
 

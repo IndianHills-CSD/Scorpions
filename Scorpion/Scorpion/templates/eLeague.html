@@ -1,0 +1,63 @@
+﻿{% extends "Navbar.html" %}
+
+{% block content %}
+
+<header>
+    <h1>
+        Results for: {{searchString}}
+    </h1>
+</header>
+
+{%for result in movieResults['Search']%}
+<<<<<<< HEAD
+    <div class="movieResult">
+        <h2>{{result['Title']}}  {{result['Year']}}</h2>
+        <p>Rated: {{result['details']['Rated']}}</p>
+        <p>Released: {{result['details']['Released']}}</p>
+        <p>Runtime: {{result['details']['Runtime']}}</p>
+        <p>Genre: {{result['details']['Genre']}}</p>
+        <p>Director: {{result['details']['Director']}}</p>
+        <p>Writer(s): {{result['details']['Writer']}}</p>
+        <p>Actors: {{result['details']['Actors']}}</p>
+        <p>Plot: {{result['details']['Plot']}}</p>
+        <p>Language: {{result['details']['Language']}}</p>
+        <p>Country: {{result['details']['Country']}}</p>
+        <p>Awards: {{result['details']['Awards']}}</p>
+        <p>Ratings:</p>
+        <ul>
+            {%for rating in result['details']['Ratings']%}
+            <li>{{rating['Source']}} {{rating['Value']}}</li>
+            {%endfor%}
+        </ul>
+        <p>Production: {{result['details']['Production']}}</p>
+        <img class="moviePic" src="{{result['Poster']}}" alt="{{result['Title']}} Poster" height="300">
+
+    </div>
+=======
+<!--<div class="movieResult">
+    <h2>{{result['Title']}}  {{result['Year']}}</h2>
+    <p>Rated: {{result['details']['Rated']}}</p>
+    <p>Released: {{result['details']['Released']}}</p>
+    <p>Runtime: {{result['details']['Runtime']}}</p>
+    <p>Genre: {{result['details']['Genre']}}</p>
+    <p>Director: {{result['details']['Director']}}</p>
+    <p>Writer(s): {{result['details']['Writer']}}</p>
+    <p>Actors: {{result['details']['Actors']}}</p>
+    <p>Plot: {{result['details']['Plot']}}</p>
+    <p>Language: {{result['details']['Language']}}</p>
+    <p>Country: {{result['details']['Country']}}</p>
+    <p>Awards: {{result['details']['Awards']}}</p>
+    <p>Ratings:</p>
+    <ul>
+        {%for rating in result['details']['Ratings']%}
+        <li>{{rating['Source']}} {{rating['Value']}}</li>
+        {%endfor%}
+    </ul>
+    <p>Production: {{result['details']['Production']}}</p>
+    <img class="moviePic" src="{{result['Poster']}}" alt="{{result['Title']}} Poster" height="300">
+
+</div> -->
+>>>>>>> e5eaf6428722f6cc1c9540b13447706d0b89bfb4
+{%endfor%}
+
+{% endblock %}
