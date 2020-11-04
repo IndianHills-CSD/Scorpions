@@ -49,7 +49,7 @@ def esports():
 @app.route('/sports')
 def sports():
     """Renders the sports page."""
-    str 
+
     return render_template(
         'Sports.html',
         title='Sports',
@@ -58,6 +58,21 @@ def sports():
         basketBallDesc = spt.getSport("Basketball"),
         footBallDesc = spt.getSport("American Football"),
         baseBallDesc = spt.getSport("Baseball")
+    )
+
+@app.route('/sports/leagues/<sportName>')
+def leagues(sportName):
+    """Renders the leagues page."""
+    league = spt.getSportsLeague(sportName)
+
+    return render_template(
+        'Leagues.html',
+        title='Sports Leagues',
+        year=datetime.now().year,
+        message='Leagues Page',
+        league = league,
+        sport = sportName,
+        spt = spt
     )
 
 @app.route('/movies')
