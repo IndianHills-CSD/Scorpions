@@ -1,7 +1,15 @@
 ﻿{% extends "Navbar.html" %}
 
-{% block content %}
+{% block head %}
+<link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
+<link rel="stylesheet" media="screen" href="/static/content/movies.css">
+{% endblock %}
+
+    {% block content %}
 <html>
+
+
 <body>
     <header>
         <h1>
@@ -9,37 +17,66 @@
         </h1>
     </header>
 
-    <p>Below is:</p>
-
-    <ul>
-        <li><a href="{{ url_for('moviesResults') }}">SearchResults</a></li>
-        <li><a href="/Review/">Review</a> </li>
-    </ul>
-
-    <form action="">
+    <div>
         Search: <input type="search" id="mySearch" name="filter">
-        <input type="submit">
-    </form>
-    
+        <button onclick="searchMovies()">Search</button>
+    </div>
+
     <p id="demo"></p>
 
-    <script>
-        function myFunction() {
-            document.getElementById("mySearch").required = true;
-            document.getElementById("demo").innerHTML = "The required property was set. The search field must now be filled out before submitting the form.";
-        }
-    </script>
+    <h1>Upcoming Movies</h1>
 
-    <div id="movies">
-        <h2>What is Movies?</h2>
-        <p>
-            motion picture or moving picture, is a visual art-form used to simulate experiences that communicate ideas,
-            stories, perceptions, feelings, beauty, or atmosphere through the use of moving images.
-            These images are generally accompanied by sound, and more rarely, other sensory stimulations.
-        </p>
+    <!-- Flickity HTML init -->
+    <div class="carousel js-flickity"
+         data-flickity-options='{ "wrapAround": true }'>
+        {%for result in upcomingMovies%}
+        <div class="gallery-cell">
+            <img src="{{result['Poster']}}" />
+            <div class="carosel-description">
+                <h2>{{result['Title']}}</h2>
+            </div>
+            <br />
+        </div>
+        {%endfor%}
     </div>
+    <br />
+
+    <h1>Trending Movies</h1>
+
+    <!-- Flickity HTML init -->
+    <div class="carousel js-flickity"
+         data-flickity-options='{ "wrapAround": true }'>
+        {%for result in trendingMovies%}
+        <div class="gallery-cell">
+            <img src="{{result['Poster']}}" />
+            <div class="carosel-description">
+                <h2>{{result['Title']}}</h2>
+            </div>
+            <br />
+        </div>
+        {%endfor%}
+    </div>
+
+
 </body>
+
+
 </html>
 
 {% endblock %}
 
+{% block scripts %}
+<script>
+    function searchMovies() {
+        var q = document.getElementById("mySearch").value.trim();
+        window.alert(q)
+        if (q == "") {
+            window.alert("You need to type something into the searchbox.");
+        } else {
+            //urll = "{{url_for('moviesResults',query = q)}}";
+            urll = "/moviesResults/" + q;
+            window.location.href = urll;
+        }
+    }
+</script>
+{% endblock %}

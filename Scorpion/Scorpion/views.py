@@ -10,6 +10,7 @@ from Scorpion import app
 import Scorpion.movieFunctions as mf
 import Scorpion.eLeagueFunctions as el
 import Scorpion.Sports as spt
+import pyodbc
 
 '''This is a future thing that renders the navbar differently
 from flask_nav import Nav
@@ -66,17 +67,18 @@ def sports():
 def leagues(sportName):
     """Renders the leagues page."""
     league = spt.getSportsLeague(sportName)
-
-    return render_template(
-        'Leagues.html',
-        title='Sports Leagues',
-        year=datetime.now().year,
-        message='Leagues Page',
-        league = league,
-        sport = sportName,
-        spt = spt
-    )
-
+    try:
+        return render_template(
+            'Leagues.html',
+            title='Sports Leagues',
+            year=datetime.now().year,
+            message='Leagues Page',
+            league = league,
+            sport = sportName,
+            spt = spt
+        )
+    except:
+        print("Error")
 @app.route('/movies')
 def movies():
     """Renders the sports page."""
@@ -85,14 +87,16 @@ def movies():
         'Movies.html',
         title='Movies',
         year=datetime.now().year,
-        message='Movies page.'
+        message='Movies page.',
+        upcomingMovies = mf.getUpcomingMovies(),
+        trendingMovies = mf.getTrendingMovies()
     )
 
 
-@app.route('/moviesResults')
-def moviesResults():
+@app.route('/moviesResults/<query>')
+def moviesResults(query):
     """Renders the sports page."""
-    theSearchString = "Avengers"
+    theSearchString = query
     actualSearch = theSearchString.replace(" ", "%20", -1)
 
     return render_template(
@@ -130,6 +134,32 @@ def League():
         year=datetime.now().year,
         message='League of Legends page'
         )
+        
+def batchUpdate():
+    todaysDate = datetime.today().strftime('%Y-%m-%d')
+    batchDate = ""
+    try:
+        f = open("updatedDate.txt", "r")
+        batchDate = f.readline()
+        f.close()
+    except:
+        batchDate = "1001-01-01"
+
+    if(todaysDate != batchDate):
+
+        
+        #try:
+            #conn = mf.getConnection()
+            conn = ""
+            mf.storeMovies(conn)
+            f = open("updatedDate.txt", "w")
+            f.write(todaysDate)
+            f.close()
+        #except:
+        #    print("Something went wrong in updating movies")
+        
+
+batchUpdate()
 
 
 

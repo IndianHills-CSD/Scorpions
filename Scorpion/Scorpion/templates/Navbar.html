@@ -1,15 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} </title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
-	<link rel="stylesheet" media="screen" href="/static/content/index1.css">
+    <link rel="stylesheet" media="screen" href="/static/content/index1.css">
     <script src="/static/content/JavaScript.js"></script>
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% block head %}
+    {% endblock %}
 </head>
 
 <body>
@@ -21,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Scoprions Project</a>
+                <a href="/" class="navbar-brand">Scorpions Project</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
